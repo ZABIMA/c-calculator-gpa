@@ -1,0 +1,52 @@
+
+#include <iostream>
+#include <iomanip>
+using namespace std;
+
+int main() {
+    int jumlahMataKuliah;
+    double gradePoint, kredit;
+    double totalNilai = 0;
+    double totalKredit = 0;
+
+    cout << "=== CGPA CALCULATOR ===" << endl;
+    cout << "Masukkan jumlah mata kuliah: ";
+    cin >> jumlahMataKuliah;
+
+    if (jumlahMataKuliah <= 0) {
+        cout << "Jumlah mata kuliah tidak valid."
+             << endl;
+        return 1;
+    }
+
+    for (int i = 1; i <= jumlahMataKuliah; i++) {
+        cout << "\nMata kuliah ke-" << i << endl;
+
+        cout << "Masukkan grade point (0-4): ";
+        cin >> gradePoint;
+
+        cout << "Masukkan jumlah kredit: ";
+        cin >> kredit;
+
+        if (gradePoint < 0 || gradePoint > 4 ||
+            kredit <= 0) {
+            cout << "Input tidak valid." << endl;
+            return 1;
+        }
+
+        totalNilai += gradePoint * kredit;
+        totalKredit += kredit;
+    }
+
+    double cgpa = totalNilai / totalKredit;
+
+    cout << fixed << setprecision(2);
+    cout << "\n=== HASIL PERHITUNGAN ===" << endl;
+    cout << "Total nilai berbobot: "
+         << totalNilai << endl;
+    cout << "Total kredit: "
+         << totalKredit << endl;
+    cout << "CGPA Anda: " << cgpa << endl;
+
+    return 0;
+}
